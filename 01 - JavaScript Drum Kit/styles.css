@@ -44,11 +44,17 @@ body {
     height: 80px;
     text-transform: uppercase;
     width: 100%;
+    transition: border-color 70ms, transform 70ms;
 }
 
 kbd {
     font-size: 2rem;
     margin-bottom: 5px;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: yellow;
 }
 
 .sound {
