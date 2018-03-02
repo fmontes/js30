@@ -1,0 +1,57 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+.keys,
+.key {
+    justify-content: center;
+}
+
+body,
+.key {
+    display: flex;
+}
+
+body {
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    padding: 50px;
+}
+
+.keys {
+    align-content: center;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    max-width: 800px;
+    width: 100%;
+}
+
+.key {
+    align-items: center;
+    background-color: #330867;
+    border: solid 2px #fff;
+    color: #fff;
+    flex-direction: column;
+    height: 80px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+kbd {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.sound {
+    color: #30cfd0;
+    font-size: 0.65rem;
+}
