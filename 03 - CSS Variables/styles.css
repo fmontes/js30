@@ -1,0 +1,41 @@
+:root {
+    --padding: 10px;
+    --blur: 10px;
+    --color: #30e8bf;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to right, #30e8bf, #ff8235);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    text-align: center;
+}
+
+img {
+    padding: var(--padding);
+    filter: blur(var(--blur));
+    background-color: var(--color);
+}
+
+.hightlight {
+    color: var(--color);
+}
+
+.controls {
+    margin: 0 auto 20px;;
+    width: 640px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
