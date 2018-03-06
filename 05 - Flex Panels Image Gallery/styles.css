@@ -1,0 +1,89 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to right, #757f9a, #d7dde8);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    display: flex;
+}
+
+.panels {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.panel {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    transition: all 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.53, 1.46);
+}
+
+.panel > p {
+    font-size: 1.5rem;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    margin: 0;    
+    transition: all 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.53, 1.46);
+}
+
+.panel > p:first-child {
+    transform: translateY(-100%);
+}
+
+.panel > p:last-child {
+    transform: translateY(100%);
+}
+
+.panel .big {
+    font-size: 3rem;
+}
+
+.panel.open {
+    flex: 3;
+}
+
+.panel.open .big {
+    font-size: 5rem;
+}
+
+.panel.open.active > p {
+    transform: translateY(0);
+}
+
+.panel1 {
+    background-image: url("https://picsum.photos/2000/1000/?image=102")
+}
+
+.panel2 {
+    background-image: url("https://picsum.photos/2000/1000/?image=202")
+}
+
+.panel3 {
+    background-image: url("https://picsum.photos/2000/1000/?image=302")
+}
+
+.panel4 {
+    background-image: url("https://picsum.photos/2000/1000/?image=402")
+}
+
+.panel5 {
+    background-image: url("https://picsum.photos/2000/1000/?image=502")
+}
