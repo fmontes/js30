@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ajax Type Ahead</title>
+</head>
+
+<body>
+    <ul class="suggestions">
+        <li>
+            <input type="text" class="search" disabled placeholder="Search for a place" />
+        </li>
+    </ul>
+
+    <script>
+        const endpoint = '//gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+        const cities = [];
+        const suggestions = document.querySelector('.suggestions');
+        const searchField = document.querySelector('.search');
+        searchField.addEventListener('keyup', render);
+        searchField.addEventListener('change', render);
+
+        fetch(endpoint).then((res) => res.json()).then((res) => {
+            cities.push(...res);
+            searchField.removeAttribute('disabled');
+        });
+
+        function getListItems(results, value) {
+            const fragment = document.createDocumentFragment();
+            const regex = new RegExp(value, 'gi');
+
+            results.map(place => {
+                const matchedCity = place.city.replace(regex, `<span class="matched">${value}</span>`)
+                const matchedState = place.state.replace(regex, `<span class="matched">${value}</span>`)
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="city">${matchedCity}</span>, <span class="state">${matchedState}</span>`;
+                fragment.appendChild(li);
+            });
+
+            return fragment;
+        }
+
+        function matchWord(word, cities) {
+            return cities.filter(place => {
+                let regex = new RegExp(word, 'gi');
+                return place.city.match(regex) || place.state.match(regex)
+            });
+        }
+
+        function render() {
+            while(suggestions.childNodes.length > 2) {
+                suggestions.removeChild(suggestions.lastChild);
+            }
+
+            if (this.value.length) {
+                suggestions.appendChild(getListItems(matchWord(this.value.toLowerCase(), cities), this.value.toLowerCase()));
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(to right, #780206, #061161);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.5rem;    
+    padding: 1rem;
+}
+
+input[type="text"] {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.5rem;    
+    width: 100%;
+}
+input[type="text"]:focus {
+    outline: 0;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.suggestions {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.suggestions li {
+    background-color: #fff;
+    padding: 0.5rem;
+}
+
+.suggestions li:first-child {
+    padding: 0.34rem;
+    background-color: transparent;
+    border: solid 2px #fff;
+}
+
+.city, .state {
+    text-transform: capitalize;    
+}
+
+.matched {
+    background: lightgreen;
+}
