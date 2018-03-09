@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Fun with HTML5 Canvas</title>
+</head>
+
+<body>
+
+    <canvas width="800" height="600"></canvas>
+
+    <script>
+        function draw(event) {
+            if (!isDrawing) return;
+            ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(event.offsetX, event.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [event.offsetX, event.offsetY];
+
+            hue++;
+            if (hue >= 360) {
+                hue = 0;
+            }
+
+            if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+                direction = !direction;
+            }
+
+            if (direction) {
+                ctx.lineWidth++;
+            } else {
+                ctx.lineWidth--;
+            }
+
+            
+        }
+
+        const canvas = document.querySelector('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+
+        ctx.strokeStyle = '#BADA55';
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 0;
+        ctx.globalCompositeOperation = 'overlay';
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let hue = 0;
+        let direction = true;
+
+        canvas.addEventListener('mousedown', () => {
+            [lastX, lastY] = [event.offsetX, event.offsetY];
+            isDrawing = true;
+        })
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        })
+
+        canvas.addEventListener('mouseout', () => {
+            isDrawing = false;
+        })
+
+        canvas.addEventListener('mousemove', draw);
+    </script>
+</body>
+
+</html>
