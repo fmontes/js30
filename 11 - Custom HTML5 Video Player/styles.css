@@ -1,0 +1,89 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to right, #ffe259, #ffa751);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="range"] {
+    width: 100px;
+}
+
+.player {
+    width: 640px;
+    height: 358px;
+    overflow: hidden;
+}
+
+.toolbar {
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    transition: all 250ms;
+    align-items: center;
+}
+
+.player:hover .toolbar {
+    transform: translateY(-40px);
+}
+
+.toolbar * {
+    margin: 0 10px;
+}
+
+.toolbar__button {
+    padding: 0;
+    position: relative;
+    border: none;
+}
+
+.toolbar__button:focus {
+    outline: none;
+}
+
+.toolbar__progress {
+    border: solid 1px gray;;
+    height: 10px;
+    flex-grow: 1;
+}
+
+.toolbar__progress-inner {
+    height: 8px;
+    background: lightgray;
+    width: 0;
+    margin: 0;
+}
+
+.toolbar__play {
+    width: 20px;
+    height: 20px;
+}
+
+.toolbar__play:after {
+    content: "";
+    display: block;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid #000;
+    width: 0;
+    height: 0;
+}
+
+.pause:after {
+    border: 0;
+    background: linear-gradient(to right, #000 0px, #000 4px, #fff 4px, #fff 6px, #000 6px);
+    width: 10px;
+    height: 14px;
+}

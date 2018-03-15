@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Custom HTML5 Video Player</title>
+</head>
+
+<body>
+
+    <div class="player">
+        <video src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
+        <div class="toolbar">
+            <button class="toolbar__button toolbar__play play"></button>
+            <input class="toolbar__range" type="range" name="volume" min="0" max="1" step="0.05" value="1" />
+            <div class="toolbar__progress">
+                <div class="toolbar__progress-inner"></div>
+            </div>
+            <button data-skip="-10" class="toolbar__button toolbar__skip">-10s</button>
+            <button data-skip="25" class="toolbar__button toolbar__skip">+25s</button>
+            <input class="toolbar__range" type="range" name="playbackRate" min="0" max="1" step="0.05" />
+            <button data-skip="25" class="toolbar__button toolbar__fullscreen">fullscreen</button>
+        </div>
+    </div>
+
+
+    <script>
+        function togglePlay() {
+            if (player.paused) {
+                player.play();
+            } else {
+                player.pause();
+            }
+        }
+
+        function updateButton() {
+            playPause.classList.toggle('pause');
+        }
+
+        function rangeHandler() {
+            player[this.name] = this.value;
+        }
+
+        function progressHandler() {
+            progressBar.style.width = `${(player.currentTime / player.duration) * 100}%`;
+            
+        }
+
+        function skipHandler() {
+            var newTime = player.currentTime + parseInt(this.dataset.skip, 10);
+
+            if (newTime >= player.duration) {
+                player.currentTime = player.duration;
+            } else if (newTime <= 0) {
+                player.currentTime = 0
+            } else {
+                player.currentTime = newTime;
+            }
+        }
+
+        function scrub(e) {
+            player.currentTime = (e.offsetX / progress.offsetWidth) * player.duration;
+        }
+
+        function fullscreenHandler() {
+            player.webkitRequestFullscreen();
+        }
+
+        const player = document.querySelector('video');
+        const playPause = document.querySelector('.toolbar__play');
+        const skips = document.querySelectorAll('.toolbar__skip');
+        const ranges = document.querySelectorAll('.toolbar__range');
+        const progress = document.querySelector('.toolbar__progress');
+        const progressBar = document.querySelector('.toolbar__progress-inner');
+        const fullscreen = document.querySelector('.toolbar__fullscreen');
+
+        playPause.addEventListener('click', togglePlay);
+        player.addEventListener('timeupdate', progressHandler);
+        player.addEventListener('play', updateButton);
+        player.addEventListener('pause', updateButton);
+        progress.addEventListener('click', scrub);
+        fullscreen.addEventListener('click', fullscreenHandler);
+
+        skips.forEach(skip => {
+            skip.addEventListener('click', skipHandler);
+        })
+
+        ranges.forEach(range => {
+            range.addEventListener('change', rangeHandler);
+        });
+
+    </script>
+</body>
+
+</html>
