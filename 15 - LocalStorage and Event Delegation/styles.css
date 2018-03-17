@@ -1,0 +1,106 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    background: linear-gradient(#4b1248, #f0c27b);
+    display: flex;
+    flex-direction: column;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    justify-content: center;
+}
+
+input[type="checkbox"] {
+    margin: 0;
+}
+
+h1 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.actions {
+    margin-bottom: 0;
+}
+
+.actions button {
+    background-color: #4b1248;
+    color: #fff;
+    border: none;
+    padding: 0.25rem 0.5rem;
+}
+
+.add {
+    display: flex;
+}
+
+.add__field,
+.add__action {
+    background: none;
+    border: 0;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1rem;
+    height: 40px;
+}
+
+.add__field {
+    border: solid 1px #444;
+    padding: 8px;
+}
+
+.add__field:focus {
+    outline: 0;
+}
+
+.add__action {
+    background-color: #444;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.list {
+    display: none;
+    list-style: none;
+    margin: 0 0 0.5rem;
+    padding: 0;
+}
+
+.list--filled {
+    display: block;
+}
+
+.list li {
+    align-items: center;
+    border-bottom: solid 1px #ddd;
+    display: flex;
+    padding: 0.5rem 0;
+}
+
+.list li:last-child {
+    border-bottom: 0;
+}
+
+.list input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.list label {
+    display: block;
+    cursor: pointer;
+}
+
+.wraper {
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 2px 2px 0 2px rgba(68, 68, 68, 0.2);
+    padding: 16px;
+}

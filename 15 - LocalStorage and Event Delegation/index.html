@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>LocalStorage and Event Delegation</title>
+</head>
+
+<body>
+    <h1>Resturant</h1>
+
+    <div class="wraper">
+        <ul class="list"></ul>
+        <form class="add">
+            <input type="text" class="add__field" />
+            <button class="add__action">Add</button>
+        </form>
+        <p class="actions">
+            <button data-check="true">Check all</button>
+            <button data-check="false">Uncheck all</button>
+        </p>
+    </div>
+
+    <script>
+        function renderItem(list, items) {
+            if (list.children.length === 0) {
+                list.classList.add('list--filled');
+            }
+
+            list.innerHTML = items.map((item, i) => {
+                return `
+                    <li>
+                        <input type="checkbox" data-index="${i}" ${item.done ? 'checked' : ''} id="item-${i}" />
+                        <label for="item-${i}">${item.text}</label>
+                    </li>
+                `;
+            }).join('');
+        }
+
+        function addItem(e) {
+            e.preventDefault();
+
+            const text = this.querySelector('input[type="text"]').value;
+
+            if (text.length) {
+                const item = {
+                    text,
+                    done: false
+                };
+
+                items.push(item);
+                localStorage.setItem('items', JSON.stringify(items));
+                renderItem(list, items);
+            }
+
+            this.reset();
+        }
+
+        function toggleItem(e) {
+            if (e.target.matches('input')) {
+                const input = e.target;
+                const index = input.dataset.index;
+                items[index].done = !items[index].done;
+                localStorage.setItem('items', JSON.stringify(items));
+                renderItem(list, items);
+            }
+        }
+
+        function handleAll(e) {
+            const check = this.dataset.check === 'true';
+            items.forEach(item => {
+                item.done = check;
+            });
+            localStorage.setItem('items', JSON.stringify(items));
+            renderItem(list, items);
+        }
+
+        const actionButtons = document.querySelectorAll('.actions button');
+        const items = JSON.parse(localStorage.getItem('items')) || [];
+        const form = document.querySelector('.add');
+        const list = document.querySelector('.list');
+
+        form.addEventListener('submit', addItem);
+        list.addEventListener('click', toggleItem);
+        actionButtons.forEach(button => {
+            button.addEventListener('click', handleAll);
+        });
+
+        renderItem(list, items);
+    </script>
+</body>
+
+</html>
