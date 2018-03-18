@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Follow Along Links</title>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#">Menu Item 1</a></li>
+            <li><a href="#">Menu Item 2</a></li>
+            <li><a href="#">Menu Item 3</a></li>
+            <li><a href="#">Menu Item 4</a></li>
+            <li><a href="#">Menu Item 5</a></li>
+        </ul>
+    </nav>
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus eius iure dolor! Voluptate ut accusantium commodi ratione. Accusamus neque expedita fugiat, molestiae quis possimus iste assumenda voluptatum quia at consequuntur.</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci placeat iure iusto molestiae est quo accusamus ducimus tempore nostrum ipsum quaerat blanditiis recusandae quam veritatis assumenda sapiente facere architecto reiciendis quasi esse, autem eaque ex amet incidunt. Alias, laboriosam ad fuga <a href="#">dolore rerum</a> odio inventore? Obcaecati deserunt iste hic vel nesciunt commodi distinctio, sunt sint repudiandae explicabo minus culpa, at possimus magni veniam aperiam ducimus ex. Inventore, ipsam. Aliquid, suscipit molestiae iusto similique quas quod ut veniam cum sed? Quisquam aliquid voluptates, neque quos accusantium perspiciatis sed nihil natus laboriosam fuga? Cum quam dolor <a href="#">tempore corrupti sit</a> beatae magni asperiores?</p>
+
+    <script>
+        function hightlight(e) {
+            hightlightEl.style.cssText = `width: ${e.target.offsetWidth}px; height: ${e.target.offsetHeight}px; left: ${e.target.offsetLeft}px; top: ${e.target.offsetTop}px;`;
+        }
+
+        const hightlightEl = document.createElement('span');
+        hightlightEl.classList.add('hightlight');
+        document.body.appendChild(hightlightEl);
+
+        const links = document.querySelectorAll('a');
+
+        links.forEach(link => {
+            link.addEventListener('mouseenter', hightlight);
+        })
+    </script>
+</body>
+</html>

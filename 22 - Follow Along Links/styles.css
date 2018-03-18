@@ -1,0 +1,42 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    padding: 100px 400px;
+    line-height: 1.5;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 1rem;
+}
+
+a {
+    z-index: 2;
+    position: relative;
+}
+
+.hightlight {
+    background: yellow;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    transition: all 200ms;
+}
