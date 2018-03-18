@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tally String Times with Reduce</title>
+</head>
+
+<body>
+
+    <h1></h1>
+    <ul class="videos">
+        <li>Title 1
+            <span data-time="1:25"></span>
+        </li>
+        <li>Title 2
+            <span data-time="2:25"></span>
+        </li>
+        <li>Title 3
+            <span data-time="3:25"></span>
+        </li>
+        <li>Title 4
+            <span data-time="4:25"></span>
+        </li>
+        <li>Title 5
+            <span data-time="5:25"></span>
+        </li>
+        <li>Title 6
+            <span data-time="6:25"></span>
+        </li>
+        <li>Title 7
+            <span data-time="7:25"></span>
+        </li>
+        <li>Title 8
+            <span data-time="8:25"></span>
+        </li>
+        <li>Title 9
+            <span data-time="9:25"></span>
+        </li>
+        <li>Title 10
+            <span data-time="10:25"></span>
+        </li>
+        <li>Title 11
+            <span data-time="11:25"></span>
+        </li>
+        <li>Title 12
+            <span data-time="12:25"></span>
+        </li>
+        <li>Title 13
+            <span data-time="13:25"></span>
+        </li>
+        <li>Title 14
+            <span data-time="14:25"></span>
+        </li>
+        <li>Title 15
+            <span data-time="15:25"></span>
+        </li>
+        <li>Title 16
+            <span data-time="16:25"></span>
+        </li>
+        <li>Title 17
+            <span data-time="17:25"></span>
+        </li>
+        <li>Title 18
+            <span data-time="18:25"></span>
+        </li>
+        <li>Title 19
+            <span data-time="19:25"></span>
+        </li>
+        <li>Title 20
+            <span data-time="20:25"></span>
+        </li>
+        <li>Title 21
+            <span data-time="21:25"></span>
+        </li>
+        <li>Title 22
+            <span data-time="22:25"></span>
+        </li>
+        <li>Title 23
+            <span data-time="23:25"></span>
+        </li>
+        <li>Title 24
+            <span data-time="24:32"></span>
+        </li>
+    </ul>
+    <script>
+        const seconds = Array.from(document.querySelectorAll('[data-time]'))
+            .map(time => time.dataset.time)
+            .reduce((acc, time) => {
+                const [min, sec] = time.split(':').map(parseFloat)
+                return acc + ((min * 60) + sec);
+            }, 0)
+
+        let secondsLeft = seconds;
+        const hours = Math.floor(secondsLeft / 3600);
+        secondsLeft = secondsLeft % 3600;
+        const mins = Math.floor(secondsLeft / 60);
+        secondsLeft = secondsLeft % 60;
+
+        document.querySelector('h1').innerHTML = `Total time: ${hours}:${mins}:${secondsLeft}`
+
+    </script>
+</body>
+
+</html>
