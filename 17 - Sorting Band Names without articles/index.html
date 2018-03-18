@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sorting Band Names without articles</title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <button class="sort">Sort bands</button>
+        <ul class="bands"></ul>
+    </div>
+
+    <script>
+        const bands = ['The Killers', 'A Night in the beach', 'An Old Doc', 'Oasis', 'Metallica', 'The Strokes'];
+        let sorted = false;
+
+        function sortBands(bands) {
+            sorted = !sorted;
+
+            if (sorted) {
+                return bands.sort((a, b) => stripArticles(a) > stripArticles(b) ? 1 : -1);
+            } else {
+                return bands.sort((a, b) => stripArticles(a) > stripArticles(b) ? -1 : 1);
+            }
+        }
+
+        function stripArticles(string) {
+            // Better use regex
+            const articles = ['The ', 'A ', 'An '];
+
+            articles.forEach(article => {
+                if (string.indexOf(article) === 0) {
+                    string = string.replace(article, '');
+                }
+            })
+
+            return string;
+        }
+
+        function render(bands) {
+            const list = document.querySelector('.bands');
+            list.innerHTML = bands.map((band, i) => `<li>${i + 1}. ${band}</li>`).join('');
+        }
+
+        document.querySelector('button').addEventListener('click', () => {
+            render(sortBands(bands));  
+        })
+
+        render(bands);
+    </script>
+</body>
+</html>
