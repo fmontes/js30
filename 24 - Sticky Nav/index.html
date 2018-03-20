@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sticky Nav</title>
+</head>
+<body>
+
+    <header>
+        <img src="https://picsum.photos/2200/500/?image=200" alt="Hello World" class="left" />
+        <nav>
+            <ul>
+                <li class="logo">LOGO</li>
+                <li><a href="#">Menu 1</a></li>
+                <li><a href="#">Menu 2</a></li>
+                <li><a href="#">Menu 3</a></li>
+                <li><a href="#">Menu 4</a></li>
+                <li><a href="#">Menu 5</a></li>
+                <li><a href="#">Menu 6</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident harum magni dolorum in doloribus rem delectus soluta commodi aperiam debitis eaque praesentium officiis porro nobis iusto nisi vitae quo itaque vero dicta, perferendis dolorem sequi? Nobis impedit provident odit, soluta numquam obcaecati cum facilis maiores ipsum iste? Temporibus odit rem sequi accusamus dignissimos recusandae cumque sint eligendi id consequuntur tempora ipsum, corrupti veniam! Minus nesciunt fuga ut deserunt? Aspernatur ducimus ipsam ad recusandae quo eligendi dolorem in, molestiae facilis! Delectus minus nulla, ad natus pariatur architecto tempore earum molestiae aliquam praesentium nemo accusantium nesciunt soluta numquam. Odio, officiis. Tenetur, iste?</p>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum impedit accusantium sed, autem ullam soluta odit? Quia, earum ullam. Sapiente, ducimus. Veniam impedit voluptates dicta, consequatur itaque, amet eligendi quidem officiis esse asperiores ad! Maxime, officia inventore non perspiciatis provident laboriosam odio quis deleniti accusamus amet delectus cupiditate illo tenetur veritatis sit itaque autem id mollitia vero nulla reiciendis odit iusto. Ipsam ad distinctio, quae dolorum officiis totam adipisci aspernatur itaque repellat eos odio veniam tempore iste molestiae nulla reprehenderit iusto voluptates sequi ea quidem est eligendi numquam assumenda impedit. Minus asperiores modi dicta optio qui illo quaerat blanditiis non deleniti quisquam tempore obcaecati nam repellat temporibus laborum dignissimos consequuntur molestiae facilis sapiente, voluptas quo doloribus, architecto minima? Laborum error adipisci quo alias vero distinctio assumenda a voluptatum unde incidunt sit reprehenderit eum quibusdam, rerum consequatur, nisi magni odio quisquam quia nemo dolorum! Doloribus numquam assumenda modi veniam architecto, consequatur hic vel totam est expedita repellendus cupiditate excepturi quis tempora recusandae nostrum praesentium mollitia sint culpa sapiente molestias. Veniam adipisci earum at possimus eius maiores. Aliquid provident velit fuga rerum eos, officia sapiente enim unde architecto dicta at repellat illum molestiae cupiditate, odio quae eum atque, vitae nisi. Dolorem, qui?</p>
+
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius dolorum architecto, praesentium consectetur nobis sunt accusamus! Id corrupti ipsa, rem quia eligendi suscipit consequuntur voluptas veritatis numquam perspiciatis ducimus ad necessitatibus, totam magnam! Voluptate saepe, consectetur voluptatibus molestiae error dignissimos maxime ex soluta dolor placeat ad unde beatae est quibusdam! At officiis tempora laudantium illo, dolore natus esse. Magnam, ut ad veniam voluptatibus dolore quod alias minima error voluptates. Iure officia mollitia ducimus reprehenderit at ut, praesentium deleniti inventore rem ex beatae similique molestias. Exercitationem a ipsum delectus, dignissimos harum fuga, inventore et aspernatur velit obcaecati error sit dolorem. Velit provident dolor dolorum consequuntur molestias vitae commodi corporis? Obcaecati recusandae temporibus, adipisci vel quis ducimus, excepturi, dolores provident placeat sed fugiat corporis magnam repellendus aliquid quisquam perferendis consequuntur reprehenderit id fugit quo enim iusto! Eum consequuntur magni exercitationem facilis distinctio eveniet corporis amet, blanditiis voluptatibus architecto neque beatae reprehenderit autem totam consectetur dolor libero, sit est possimus soluta a quis odio porro? Adipisci tempore nesciunt sequi eligendi magnam corporis illum debitis quasi beatae recusandae corrupti necessitatibus, enim nisi deserunt quia cum. Inventore hic, quasi incidunt iure blanditiis odio earum consectetur sequi nesciunt nemo harum porro possimus officia totam alias doloremque numquam beatae expedita magnam natus! Molestias quo facere rem accusamus eaque odit labore modi earum, repudiandae quam a vitae saepe alias doloremque sunt ipsa libero? Est velit, iusto soluta quia dolorum alias animi totam aliquam sapiente pariatur ea quidem harum placeat magni fugiat sequi, atque eligendi porro. Fugiat ipsum est quis placeat ad aliquam aut aspernatur voluptate deserunt laboriosam repellendus, consequuntur nostrum nam eaque, doloremque rem earum debitis odio. Cupiditate repudiandae totam maxime dolor nostrum ipsum, rerum quibusdam culpa itaque, voluptatem officiis a perferendis consequatur soluta illo officia at laudantium tempore. Iusto officia temporibus obcaecati laborum iure minus eveniet nihil.</p>
+    </main>
+
+
+    <script>
+        const nav = document.querySelector('nav');
+        const navY = nav.offsetTop;
+        const navHeight = nav.offsetHeight;
+
+        function stickNav() {
+            
+            if (window.pageYOffset >= navY) {
+                document.body.classList.add('nav-fixed');
+                document.body.style.paddingTop = `${navHeight}px`;
+            } else {
+                document.body.style.paddingTop = 0;
+                document.body.classList.remove('nav-fixed');
+            }
+        }
+
+        window.addEventListener('scroll', stickNav);
+    </script>
+</body>
+</html>
