@@ -1,0 +1,49 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to right, #757f9a, #d7dde8);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    padding: 4rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.menu li > ul {
+    transition: opacity 200ms;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.menu li.active > ul {
+    opacity: 1;
+}
+
+.menu > li {
+    /* margin: 0 2rem; */
+}
+
+.menu-background {
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+    transition: all 200ms;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Stripe Follow Along Dropdown</title>
+</head>
+<body>
+    <div class="menu-background"></div>
+    <nav>
+        <ul class="menu">
+            <li>
+                <a href="#">Menu 1</a>
+                <ul>
+                    <li><a href="#">Sub Menu 1</a></li>
+                    <li><a href="#">Sub Menu 2</a></li>
+                    <li><a href="#">Sub Menu 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Menu 2</a>
+                <ul>
+                    <li><a href="#">Sub Menu 1</a></li>
+                    <li><a href="#">Sub Menu 2</a></li>
+                    <li><a href="#">Sub Menu 3</a></li>
+                    <li><a href="#">Sub Menu 4</a></li>
+                    <li><a href="#">Sub Menu 5</a></li>
+                    <li><a href="#">Sub Menu 6</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Menu 3</a>
+                <ul>
+                    <li><a href="#">Sub Menu 1</a></li>
+                    <li><a href="#">Sub Menu 2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+
+
+    <script>
+        const menuBackground = document.querySelector('.menu-background');
+
+        function toggleItem() {
+            this.parentNode.classList.toggle('active');
+            const menu = this.parentNode.querySelector('ul');
+
+            if (menu) {
+                menuBackground.style.width = `${menu.offsetWidth}px`;
+                menuBackground.style.height = `${menu.offsetHeight}px`;
+                menuBackground.style.top = `${menu.offsetTop}px`;
+                menuBackground.style.left = `${menu.offsetLeft}px`;
+            }
+
+        }
+
+
+        const mainLinks = document.querySelectorAll('.menu > li a');
+
+        mainLinks.forEach(link => {
+            link.addEventListener('mouseenter', toggleItem);
+            link.addEventListener('mouseout', toggleItem);
+        });
+
+    </script>
+</body>
+</html>
